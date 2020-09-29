@@ -7,6 +7,7 @@ public class CompanyEmpWage {
 	private int total_working_hours;
 	private int perhour_wage;
 	private int total_wages = 0;
+	private int[] daily_wages;
 	
 	public 	CompanyEmpWage(String company_name, int total_working_days, int total_working_hours, int perhour_wage) {
 		// TODO Auto-generated constructor stub
@@ -55,6 +56,14 @@ public class CompanyEmpWage {
 
 	public void setTotal_wages(int total_wages) {
 		this.total_wages = total_wages;
+	}
+	
+	public int[] getDaily_wages() {
+		return daily_wages;
+	}
+	
+	public void setDaily_wages(int[] daily_wages) {
+		this.daily_wages = daily_wages;
 	}
 	
 	

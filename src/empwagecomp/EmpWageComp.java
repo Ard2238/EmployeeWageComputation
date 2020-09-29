@@ -19,8 +19,11 @@ public class EmpWageComp implements EmpWageInterface {
 	
 	
 	public void calculateWage(CompanyEmpWage cew) {
-		int work_hours = 0;	
-		int total_hours = 0, total_days = 0;	
+		int work_hours = 0, daily_wages = 0;	
+		int total_hours = 0, total_days = 0;
+		
+		int[] dailywages_arr = new int[cew.getTotal_working_days()];
+		int i=0;
 		
 		while (total_days < cew.getTotal_working_days() && total_hours <= cew.getTotal_working_hours())
 		{
@@ -35,13 +38,16 @@ public class EmpWageComp implements EmpWageInterface {
 				default:
 					work_hours = 0;		
 			}
-
+			
+			daily_wages = work_hours * cew.getPerhour_wage();
+			dailywages_arr[i] = daily_wages;
 			total_hours += work_hours;
-			total_days++;
+			total_days++; i++;
 
 			System.out.println("Current Day Hours: " + work_hours+ "   Total hours: " + total_hours);
 		}
 		
+		cew.setDaily_wages(dailywages_arr);
 		cew.setTotal_wages(total_hours * cew.getPerhour_wage());
 		System.out.println("The total monthly wages of " + cew.getCompany_name() + " are " + cew.getTotal_wages());		
 	}
@@ -50,11 +56,10 @@ public class EmpWageComp implements EmpWageInterface {
 	public static void main(String args[]){
 		
 		Scanner sc = new Scanner(System.in);
+		EmpWageComp ewc= new EmpWageComp();
 		int choice = 1;
 		
 		while(choice != 0) {
-			
-			EmpWageComp ewc= new EmpWageComp();
 			
 			System.out.println("Do you want to compute wages for another company? \n0. No \n1. Yes");
 			choice = sc.nextInt();
@@ -73,7 +78,8 @@ public class EmpWageComp implements EmpWageInterface {
 				ewc.calculateWage(cew);
 				ewc.cew_objects.add(cew);
 			}
-		}
+		}		
+		
 		sc.close();
 		return;
 	}
