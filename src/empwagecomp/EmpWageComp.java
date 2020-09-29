@@ -4,12 +4,18 @@ public class EmpWageComp {
 
 	static final int present_fulltime = 1;
 	static final int present_parttime = 2;
-	static final int total_working_days = 20;
-	static final int total_working_hours = 100;
+	private int total_working_days;
+	private int total_working_hours;
+	private int perhour_wage;
+	
+	public EmpWageComp(int total_working_days, int total_working_hours, int perhour_wage) {
+		this.total_working_days = total_working_days;
+		this.total_working_hours = total_working_hours;
+		this.perhour_wage = perhour_wage;
+	}
 	
 	public void calculateWage() {
-		int work_hours = 0;
-		int perhour_wage = 20;	
+		int work_hours = 0;	
 		int total_wages = 0, total_hours = 0, total_days = 0;	
 		
 		while (total_days < total_working_days && total_hours <= total_working_hours)
@@ -37,7 +43,9 @@ public class EmpWageComp {
 	}
 	public static void main(String args[]){
 		
-		EmpWageComp ewc= new EmpWageComp();
+		EmpWageComp ewc= new EmpWageComp(20,100,20);
 		ewc.calculateWage();		
 	}
 }
+
+
