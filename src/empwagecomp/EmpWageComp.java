@@ -52,6 +52,12 @@ public class EmpWageComp implements EmpWageInterface {
 		System.out.println("The total monthly wages of " + cew.getCompany_name() + " are " + cew.getTotal_wages());		
 	}
 	
+	public int getTotalWages(CompanyEmpWage cew) {
+		
+		int total_wages = cew.getTotal_wages();
+		return total_wages;
+	}
+	
 	
 	public static void main(String args[]){
 		
@@ -77,6 +83,7 @@ public class EmpWageComp implements EmpWageInterface {
 				CompanyEmpWage cew = ewc.createCEWObject(name,t_days,t_hrs,ph_wage);
 				ewc.calculateWage(cew);
 				ewc.cew_objects.add(cew);
+				System.out.println("The total wages of "+ cew.getCompany_name()+ " are: " + ewc.getTotalWages(cew));
 			}
 		}		
 		
