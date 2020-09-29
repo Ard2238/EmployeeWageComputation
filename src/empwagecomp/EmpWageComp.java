@@ -1,10 +1,9 @@
 package empwagecomp;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 
-public class EmpWageComp {
+public class EmpWageComp implements EmpWageInterface {
 	
 	static final int present_fulltime = 1;
 	static final int present_parttime = 2;
@@ -12,7 +11,7 @@ public class EmpWageComp {
 	private ArrayList<CompanyEmpWage> cew_objects = new ArrayList<CompanyEmpWage>();
 	
 
-	public static CompanyEmpWage createCEWObject(String name, int totaldays, int totalhours, int perhourwage) {
+	public CompanyEmpWage createCEWObject(String name, int totaldays, int totalhours, int perhourwage) {
 		
 		CompanyEmpWage cew_ob = new CompanyEmpWage(name, totaldays, totalhours, perhourwage);		
 		return cew_ob;		
@@ -70,7 +69,7 @@ public class EmpWageComp {
 				System.out.println("Enter the wage per hour:");
 				int ph_wage = sc.nextInt();
 				
-				CompanyEmpWage cew = createCEWObject(name,t_days,t_hrs,ph_wage);
+				CompanyEmpWage cew = ewc.createCEWObject(name,t_days,t_hrs,ph_wage);
 				ewc.calculateWage(cew);
 				ewc.cew_objects.add(cew);
 			}
